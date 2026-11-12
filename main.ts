@@ -127,7 +127,7 @@ await runBars({
     if (closes.length <= LOOKBACK) return [];
     const back = closes[barIdx - LOOKBACK]!;
     const momentumBps = ((close - back) * BPS) / back;
-    const threshold = trips === 0 ? ENTRY_BPS : REENTRY_BPS;
+    const threshold = trips > 0 ? REENTRY_BPS : ENTRY_BPS;
     if (momentumBps < threshold) return [];
 
     // Buy with all available cash, capped by the weight room (100% of equity
