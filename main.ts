@@ -2,7 +2,7 @@
 //
 // Strategy (long only, cbBTC/USDC, 1-minute bars):
 //   - Entry: the close has risen at least ENTRY_BPS over the last LOOKBACK bars
-//     (a 75-minute momentum burst). The first entry of the window needs 50 bps;
+//     (a 75-minute momentum burst). The first entry of the window needs 40 bps;
 //     any re-entry needs 100 bps (a genuinely strong second move) and a 120-bar
 //     cooldown after the previous exit. At most MAX_TRIPS round trips per window.
 //   - Exit: take-profit at +TP_BPS from the entry close, a trailing stop of
@@ -30,7 +30,7 @@ const SYMBOL = 'CBBTC';
 
 // --- Strategy parameters (bps unless noted) ---
 const LOOKBACK = 75; // bars of momentum history for the entry signal
-const ENTRY_BPS = 50n; // first-entry threshold: close up >= 50 bps over LOOKBACK bars
+const ENTRY_BPS = 40n; // first-entry threshold: close up >= 40 bps over LOOKBACK bars
 const REENTRY_BPS = 100n; // re-entry threshold (must be a much stronger move)
 const TRAIL_BPS = 40n; // trailing stop: sell if close falls 40 bps from the peak
 const TP_BPS = 70n; // take-profit: sell if close gains 70 bps from the entry close
